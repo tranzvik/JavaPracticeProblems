@@ -1,3 +1,8 @@
+import Trees.LeftViewBinaryTree;
+import Trees.SecondHighestNumberInBST;
+import Trees.TreeProblems;
+import jdk.jfr.internal.tool.Main;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileWriter;
@@ -25,7 +30,6 @@ public class MainDemo {
         //System.out.println(map1);
         // checkSumPair();
         //shoppingCartMatch();
-        //TreeTraversals.treeTraversalsInBST();
         //sortHashMapValue();
         //kthSmallestElement();
         //kthHighestElement();
@@ -35,7 +39,12 @@ public class MainDemo {
         //testDemo();
         //fileCreator();
        // sortMapByValue();
-       // TreeProblems.demoProblems();
+       // TreeProblems.solveTreeProblems();
+        //Singleton singleton1 = Singleton.getSingletonInstance();
+
+        //concurrentModificationException();
+        new MainDemo().printPermutationsOfString("abc","");
+
 
     }
 
@@ -93,6 +102,7 @@ public class MainDemo {
         List<Integer> list1 = Arrays.asList(1, 5, 7, -1, 9, 10, -3);
         int sum = 6;
         Map<Integer, Integer> diff = list1.stream().collect(Collectors.toMap(x -> x, x -> sum - x));
+
         //System.out.println(diff);
         Map<Integer, Integer> resultMap = new HashMap<>();
 
@@ -204,5 +214,40 @@ public class MainDemo {
         }
 
     }
+
+
+    public static void concurrentModificationException() {
+
+        //Use CopyOnWriteArrayList
+        List<Integer> list1 = new ArrayList<>();
+        list1.add(29);list1.add(90);list1.add(12);list1.add(5);
+
+
+        Iterator<Integer> iterator = list1.iterator();
+        for(int i=0;i<list1.size();i++){
+            System.out.println(list1.get(i));
+            list1.add(10);
+            if(i>30) break;
+        }
+        /*while (iterator.hasNext()){
+            System.out.println(iterator.next());
+            list1.add(10);
+        }*/
+    }
+
+    void  printPermutationsOfString(String str, String prefix) {
+        if (str.length() == 0) {
+            System.out.println(prefix);
+        } else {
+            for (int i = 0; i < str.length(); i++) {
+                String rem = str.substring(0, i) +
+                        str.substring(i + 1);
+                printPermutationsOfString(rem, prefix + str.charAt(i));
+
+            }
+        }
+
+    }
+
 
 }

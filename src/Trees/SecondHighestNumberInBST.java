@@ -3,7 +3,7 @@ package Trees;
 import java.util.Collections;
 import java.util.List;
 
-public class TreeTraversals {
+public class SecondHighestNumberInBST {
 
     static int counter=0;
 
@@ -12,6 +12,9 @@ public class TreeTraversals {
         secondHighestNumberInBST(root);
     }
 
+    /**
+     * secondHighestNumberInBST
+     */
     public static void secondHighestNumberInBST(Node root) {
         if(root!=null) {
             if(root.right!=null) {
@@ -36,7 +39,7 @@ public class TreeTraversals {
                         6
                       /   \
                      4     8
-                   /  \   /  \
+                   /  \   /  \3
                   2    5  7   9
 
          */

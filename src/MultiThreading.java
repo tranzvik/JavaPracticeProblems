@@ -8,12 +8,7 @@ public class MultiThreading {
     public void threadDemo() {
         MultiThreading multiThreading = new MultiThreading();
 
-        Thread A = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                multiThreading.printEvenNumber();
-            }
-        });
+        Thread A = new Thread(() -> multiThreading.printEvenNumber());
 
         Thread B = new Thread(new Runnable() {
             @Override
