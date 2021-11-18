@@ -36,3 +36,102 @@ There was a sorted array: -9, 3, 4, 5, 6, 17, 42, 46, 56. (Don't use this as inp
 
        }
         System.out.println(pivot);
+        }
+        
+        
+        /////////////////////////////
+        
+        /*int cache_size;
+HashMap<Integer,NodeElement> map;
+int counter=0;
+NodeElement start;
+NodeElement end;
+
+*//**
+ * start and end at same point.
+ * start is the cache priority
+ * 1,(1,1)-> 2,(2,1)->3,(3,2)
+ *
+ *//*
+Demo(int size) {
+    this.cache_size= size;
+    map =  new HashMap<>();
+    start = new NodeElement(-1,-1);
+    end =   new NodeElement(-1,-1);
+    start.nextNode = end;
+    end.prevNode =  start;
+    start.prevNode = null;
+    end.nextNode = null;
+}
+
+*//**
+ * LRU cache(Bounded cache-with initial size)
+ * evict the least recently used item from the cache.
+ * Each time we read or write to the key it is considered used..
+ *
+ * hm.put(1,1)--> least recent
+ *   hm.put(2,1)
+ *   if we read back 1, 2 becomes recently used
+ *
+ * //get function and a put function
+ *
+ *//*
+
+
+
+public int getValue(int key){
+
+    int result=0;
+
+    if(map.get(key)!=null) {
+        NodeElement nodeElement = map.get(key);
+        result = nodeElement.getValue();
+        removeNode(nodeElement);
+        addtoStartOfList(nodeElement);
+    } else{
+        result = -1;
+    }
+
+    return result;
+
+}
+
+public void setValue(int key, int value) {
+    NodeElement nodeElement = new NodeElement(key,value);
+    map.put(key,nodeElement);
+    if(counter<cache_size) {
+        counter++;
+        addtoStartOfList(nodeElement);
+
+    }
+    else {
+        map.remove(end.prevNode.key);
+        removeNode(end.prevNode);
+        addtoStartOfList(nodeElement);
+    }
+}
+
+
+public void removeNode(NodeElement nodeElement){
+    nodeElement.prevNode.nextNode = nodeElement.nextNode;
+    nodeElement.nextNode.prevNode = nodeElement.prevNode;
+}
+
+*//* 1,(1,1)-> 2,(2,1)->3,(3,2)*//*
+public void addtoStartOfList(NodeElement nodeElement){
+    nodeElement.nextNode = start.nextNode;
+    nodeElement.nextNode.prevNode = nodeElement;
+    nodeElement.prevNode = start;
+    start.nextNode = nodeElement;
+}
+
+
+
+
+public static void main(String[] args) {
+
+    Demo demo = new Demo(2);
+    demo.setValue(1,1);
+    demo.setValue(2,1);
+
+}*/
