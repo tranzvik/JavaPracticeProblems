@@ -1,0 +1,38 @@
+There was a sorted array: -9, 3, 4, 5, 6, 17, 42, 46, 56. (Don't use this as input)
+         Now it has been rotated somewhere in between. Now you need to find out pivot in a sorted rotated array:
+         17, 42, 46, 56, -9, 3, 4, 5, 6 => so, output should be index 4.
+         Don't use sort, indexOf functions...
+         **/
+
+        String s = "pinelabs company";
+        char arr[] = s.toLowerCase().toCharArray();
+       // Arrays.sort(arr);
+
+        //System.out.println(Character.getNumericValue('A'));
+        //17, 42, 46, 56, -9, 3, 4, 5, 6
+
+        List<Integer> arr1= Arrays.asList(17, 42, 46, 56, -9, 3, 4, 5, 6);
+        int low=0;
+        int high =arr1.size()-1;
+        int pivot=0;
+
+       while(low<high) {
+            //4
+           pivot = (low+high)/2;
+
+           if(arr1.get(pivot)<arr1.get(low)){
+               break;
+           }
+           else {
+               low=pivot;
+           }
+
+            if(arr1.get(pivot)<arr1.get(high)){
+              break;
+           }
+           else {
+               high=pivot;
+           }
+
+       }
+        System.out.println(pivot);
